@@ -35,6 +35,8 @@ gem "react_on_rails", "~> 6"
 gem 'devise_token_auth', '~> 0.1.39'
 gem 'letter_opener', '~> 1.4', '>= 1.4.1'
 gem 'active_model_serializers', '~> 0.10.3'
+gem 'omniauth', '~> 1.3', '>= 1.3.1'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
