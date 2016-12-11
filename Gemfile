@@ -33,7 +33,6 @@ gem 'turbolinks', '~> 5'
 # gem 'capistrano-rails', group: :development
 gem "react_on_rails", "~> 6"
 gem 'devise_token_auth', '~> 0.1.39'
-gem 'letter_opener', '~> 1.4', '>= 1.4.1'
 gem 'active_model_serializers', '~> 0.10.3'
 gem 'omniauth', '~> 1.3', '>= 1.3.1'
 
@@ -50,11 +49,13 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'mailtrap', '~> 0.2.1'
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'foreman', '~> 0.82.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -30,7 +30,6 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   # Use LetterOpener as the default e-mail previewer in development
-  config.action_mailer.delivery_method = :letter_opener
 
   config.action_mailer.perform_caching = false
 
