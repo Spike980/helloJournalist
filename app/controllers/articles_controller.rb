@@ -11,6 +11,32 @@ class ArticlesController < ApplicationController
 
 	end
 
+	def index
+		@articles = Article.all
+
+		render json: @articles, status: 200
+	end
+
+	def show
+		begin	
+			@article = Article.find(params[:id])
+		rescue ActiveRecord::RecordNotFound
+			@article = nil
+		end
+
+		render json: @article, status: 200
+	end
+
+	def destroy
+		begin	
+			@art = Article.find(params[:id]).destroy 
+			head 204
+		rescue ActiveRecord::RecordNotFound
+			render json: @art, status: 422
+		end
+	end
+
+
 	private
 
 		def article_params
