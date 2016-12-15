@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+	#before_action :authenticate_user!
 	def create
 		@article = Article.new(article_params)
 
@@ -32,8 +33,20 @@ class ArticlesController < ApplicationController
 			@art = Article.find(params[:id]).destroy 
 			head 204
 		rescue ActiveRecord::RecordNotFound
-			render json: @art, status: 422
+			head 422
 		end
+	end
+
+	def like
+		begin
+			@art = Article.find(params[:id])
+			@art.likes+=1
+			@art.save
+			render json: @art, fields: [:id, :likes], include: [], status: 200
+		rescue ActiveRecord::RecordNotFound
+			head 422
+		end
+
 	end
 
 

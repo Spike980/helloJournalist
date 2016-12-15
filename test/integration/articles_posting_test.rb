@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class ArticlesPostingTest < ActionDispatch::IntegrationTest
+	include Devise::Test::IntegrationHelpers
+
 	def setup
 		@user = create(:user)
 		@category = create(:category)
@@ -66,4 +68,17 @@ class ArticlesPostingTest < ActionDispatch::IntegrationTest
 		end
 			assert_response 422
 	end
+
+	test "like article with valid id" do
+		get "/articles/#{@articles.id}/like", headers: { 'Accept' => Mime[:json] }
+		articles = json_response(response)
+		assert_equal @articles.likes+1, articles[:likes]
+	end
+
+	test "like article with invalid id" do
+		get "/articles/433/like", headers: { 'Accept' => Mime[:json] }
+		assert_response 422
+		assert_empty response.body
+	end
+
 end
