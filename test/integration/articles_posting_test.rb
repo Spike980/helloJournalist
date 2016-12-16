@@ -18,9 +18,11 @@ class ArticlesPostingTest < ActionDispatch::IntegrationTest
 	end
 
 	def teardown
+		puts "tearing down"
+		Rails.cache.clear
 		if Rails.env.test? || Rails.env.cucumber?
 	      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
-    end
+	    end
 	end
 
 	test "create articles" do
