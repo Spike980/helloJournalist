@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def destroy
-		if (@correct_user)
+		if @correct_user
 			@article.destroy
 			head 204
 		else
@@ -61,7 +61,7 @@ class ArticlesController < ApplicationController
 	private
 
 		def article_params
-			params.require(:article).permit(:post, :category_id, :city_id)
+			params.require(:article).permit(:post, :image, :category_id, :city_id)
 		end
 
 		def correct_user

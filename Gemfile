@@ -14,7 +14,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+#gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -35,6 +35,8 @@ gem "react_on_rails", "~> 6"
 gem 'devise_token_auth', '~> 0.1.39'
 gem 'active_model_serializers', '~> 0.10.3'
 gem 'omniauth', '~> 1.3', '>= 1.3.1'
+gem 'carrierwave', '~> 0.11.2'
+gem 'mini_magick', '~> 4.6'
 
 
 group :development, :test do
@@ -57,6 +59,10 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'foreman', '~> 0.82.0'
   gem 'faker', '~> 1.6', '>= 1.6.6'
+end
+
+group :production do
+  gem 'fog', '~> 1.38'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

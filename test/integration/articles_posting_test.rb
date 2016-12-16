@@ -9,6 +9,7 @@ class ArticlesPostingTest < ActionDispatch::IntegrationTest
 		@category = create(:category)
 		@city = create(:city)
 		@articles = create(:article, post: "James Bond")
+		@article = build(:article)
 		@user1 = create(:user, id: 334)
 		@articles1 = create(:article, user_id: 334)
 		5.times do |n|
@@ -16,13 +17,19 @@ class ArticlesPostingTest < ActionDispatch::IntegrationTest
 		end
 	end
 
+	def teardown
+		if Rails.env.test? || Rails.env.cucumber?
+	      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
+    end
+	end
+
 	test "create articles" do
 		post '/articles', 
 			params: { article: 
-				{ post: 'My Text 1', category_id: @category.id, city_id: @city.id }
+				{ post: @article.post, image: Rack::Test::UploadedFile.new(File.join(Rails.root, 'test', 'images', 'post_image', '1.png')), category_id: @category.id, city_id: @city.id }
 			},
-			headers: @req_headers.merge({ 'Accept' => Mime[:json], 'Content-Type' => Mime[:json].to_s }),
-			as: :json
+			headers: @req_headers.merge({ 'Content-Type' => 'multipart/form-data' })
+			# as: :json
 
 		assert_response 201
 		assert_equal Mime[:json], response.content_type
