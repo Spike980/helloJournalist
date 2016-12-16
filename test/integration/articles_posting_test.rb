@@ -5,16 +5,16 @@ class ArticlesPostingTest < ActionDispatch::IntegrationTest
 
 	def setup
 		@user = create(:user)
+		@user1 = create(:user, id: 334)
 		authenticate_user @user
 		@category = create(:category)
 		@city = create(:city)
-		@articles = create(:article, post: "James Bond")
 		@article = build(:article)
-		@user1 = create(:user, id: 334)
 		@articles1 = create(:article, user_id: 334)
 		5.times do |n|
 		 create(:article_list)
 		end
+		@articles = create(:article, post: "James Bond")
 	end
 
 	def teardown
