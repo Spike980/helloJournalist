@@ -12,10 +12,8 @@ class ArticlesPostingUnauthenticatedTest < ActionDispatch::IntegrationTest
 	end
 
 	def teardown
-		Rails.cache.clear
-		if Rails.env.test? || Rails.env.cucumber?
 	      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
-	    end
+	      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/"])
 	end
 
 	test "create articles" do
@@ -52,5 +50,6 @@ class ArticlesPostingUnauthenticatedTest < ActionDispatch::IntegrationTest
 		get "/articles/#{@articles.id}/like", headers: { 'Accept' => Mime[:json] }
 		assert_response 401
 	end
+
 
 end

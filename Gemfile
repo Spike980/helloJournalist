@@ -59,6 +59,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'foreman', '~> 0.82.0'
   gem 'faker', '~> 1.6', '>= 1.6.6'
+  gem 'guard' # NOTE: this is necessary in newer versions
+  gem 'guard-minitest'
 end
 
 group :production do
