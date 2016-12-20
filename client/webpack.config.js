@@ -4,6 +4,7 @@
 
 const webpack = require('webpack');
 const path = require('path');
+var Auth = require('j-toker');
 
 const devBuild = process.env.NODE_ENV !== 'production';
 const nodeEnv = devBuild ? 'development' : 'production';

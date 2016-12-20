@@ -326,7 +326,7 @@ GEM
       json (>= 1.8)
       nokogiri (~> 1.5)
       trollop (~> 2.1)
-    react_on_rails (6.3.1)
+    react_on_rails (6.1.0)
       addressable
       connection_pool
       execjs (~> 2.5)
@@ -412,7 +412,7 @@ DEPENDENCIES
   pg
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
-  react_on_rails (~> 6)
+  react_on_rails (= 6.1)
   sass-rails (~> 5.0)
   shoulda (~> 3.5)
   shoulda-matchers (~> 2.0)

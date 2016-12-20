@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import ReactOnRails from 'react-on-rails';
 
 export default class HelloWorld extends React.Component {
   static propTypes = {
@@ -15,6 +16,12 @@ export default class HelloWorld extends React.Component {
     // How to set initial state in ES6 class syntax
     // https://facebook.github.io/react/docs/reusable-components.html#es6-classes
     this.state = { name: this.props.name };
+  }
+
+  componentDidMount() {
+    console.log("component did mount");
+    var store = ReactOnRails.getStore("helloReduxStore");    
+    console.log(store);
   }
 
   updateName = (name) => {
