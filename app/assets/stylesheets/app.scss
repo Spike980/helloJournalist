@@ -1,0 +1,44 @@
+$primary-color: #1BBC9B;
+
+#primary_navbar {
+	background-color: #1BBC9B;
+	color:white;
+
+	@media (min-width: 768px)
+	{
+		padding-right: 7em;
+	}
+}
+
+.navbar-default .navbar-header .navbar-brand {
+    font-family: 'Great Vibes', cursive;//'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-size: 5em;
+    font-weight: 700;
+    color: #fff;
+}
+
+.navbar-default .navbar-header .navbar-brand:hover,
+.navbar-default .navbar-header .navbar-brand:focus {
+    color: #eb3812;
+}
+
+
+#primary_navbar .nav > li > a {
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+	color: #444;
+	font-weight: 700;
+	font-size: 14px;
+
+	&:focus, &:hover {
+		color: #fff;
+	}
+
+}
+
+body {
+    font-family: 'Lato';
+}
+
+.fa-btn {
+    margin-right: 6px;
+}

@@ -10,17 +10,27 @@
     <meta name="author" content="">
 
     <title>hiiCiti - Meet your city</title>
+    <%= csrf_meta_tags %>
 
-    <link rel="stylesheet" href="/css/app.css" type="text/css">
-    <link rel="stylesheet" href="/css/creative.css" type="text/css">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- Custom Fonts -->
+
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/fonts/font-awesome/css/font-awesome.min.css" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
     <!-- Plugin CSS -->
-    <link rel="stylesheet" href="/css/animate.min.css" type="text/css">
+    <!-- Latest compiled and minified CSS -->
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -47,34 +57,22 @@
                 <!-- Modal body -->
                 <div class="modal-body">
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {!! csrf_field() !!}
+                    <form class="form-horizontal" role="form" method="POST" action="">
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="form-group">
                             <label for="email" class="col-xs-2 control-label">E-Mail: </label>
 
                             <div class="col-xs-10">
-                                <input type="email" class="form-control" name="email" id="loginId" value="{{ old('email') }}">
+                                <input type="email" class="form-control" name="email" id="loginId" value="">
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <em>{{ $errors->first('email') }}</em>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="form-group">
                             <label for="password" class="col-xs-2 control-label">Password</label>
 
                             <div class="col-xs-10">
                                 <input type="password" class="form-control" name="password" id="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <em>{{ $errors->first('password') }}</em>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
@@ -96,7 +94,7 @@
                             </div>
 
                             <div class="col-md-6 col-md-offset-4">
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+                                <a class="btn btn-link" href="">Forgot Your Password?</a>
                             </div>
                         </div>
                     </form>
@@ -106,7 +104,7 @@
     </div>
 
 
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top" style="background: transparent">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -188,28 +186,28 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
-                        <i class="fa fa-4x fa-users wow bounceIn text-primary" aria-hidden="true"></i>
+                        <i class="fa fa-4x fa-users bounceIn text-primary" aria-hidden="true"></i>
                         <h3>Meet People</h3>
                         <p class="text-muted">Make new friends in a strange city and get to know more about the city from them.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
-                        <i class="fa fa-4x fa-info-circle wow bounceIn text-primary" aria-hidden="true" data-wow-delay=".1s"></i>
+                        <i class="fa fa-4x fa-info-circle bounceIn text-primary" aria-hidden="true" ></i>
                         <h3>Stay Informed</h3>
                         <p class="text-muted">Get answer to questions like "Where can I find X?", "How can I reach X place"</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
-                        <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" aria-hidden="true" data-wow-delay=".2s"></i>
+                        <i class="fa fa-4x fa-newspaper-o bounceIn text-primary" aria-hidden="true"></i>
                         <h3>Up to Date</h3>
                         <p class="text-muted">Keep yourself updated with your city events and happenings.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
-                        <i class="fa fa-4x fa-share-square-o wow bounceIn text-primary" aria-hidden="true" data-wow-delay=".3s"></i>
+                        <i class="fa fa-4x fa-share-square-o bounceIn text-primary" aria-hidden="true" ></i>
                         <h3>Share</h3>
                         <p class="text-muted">Have something to share with your citi-<i>ites</i>! You are at the right place.</p>
                     </div>
@@ -231,7 +229,7 @@
             <div class="row no-gutter">
                 <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
-                        <img src="/images/1.jpg" class="img-responsive" alt="">
+                        <%= image_tag("images/1.jpg", class: "img-responsive", alt: "Nothing") %>
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">
@@ -243,7 +241,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
-                        <img src="/images/2.jpg" class="img-responsive" alt="">
+                        <%= image_tag("images/2.jpg", class: "img-responsive", alt: "Nothing") %>
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">
@@ -255,7 +253,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
-                        <img src="images/3.jpeg" class="img-responsive" alt="">
+                        <%= image_tag("images/3.jpg", class: "img-responsive", alt: "Nothing") %>
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">
@@ -267,7 +265,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
-                        <img src="images/portfolio/4.jpg" class="img-responsive" alt="">
+                        <%= image_tag("images/portfolio/4.jpg", class: "img-responsive", alt: "Nothing") %>
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">
@@ -279,7 +277,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
-                        <img src="images/portfolio/5.jpg" class="img-responsive" alt="">
+                        <%= image_tag("images/portfolio/5.jpg", class: "img-responsive", alt: "Nothing") %>
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">
@@ -291,7 +289,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
-                        <img src="images/portfolio/6.jpg" class="img-responsive" alt="">
+                        <%= image_tag("images/portfolio/6.jpg", class: "img-responsive", alt: "Nothing") %>
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">
@@ -315,32 +313,14 @@
                     <p>Need any more information! Have something to say! Any Complaints! Any Suggestions! <br/>Just mail me at:</p>
                 </div>
                 <div class="col-lg-offset-4 col-lg-4 text-center">
-                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                    <i class="fa fa-envelope-o fa-3x bounceIn"></i>
                     <p><a href="mailto:your-email@your-domain.com">anandmallick980@gmail.com</a></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <script src="/js/app.js"></script>
-
-    @if($errors->has('email') || $errors->has('password')) 
-        <script type="text/javascript">
-           $('#login').modal(); 
-        </script> 
-    @endif
-
-    @include('footer') 
-
-
-
-    <!-- Plugin JavaScript -->
-    <script src="/js/wow.min.js"></script>
-    <script src="/js/jquery.easing.min.js"></script>
-    <script src="/js/jquery.fittext.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="/js/creative.js"></script>
+    <%= yield %>
 
 
 </body>
