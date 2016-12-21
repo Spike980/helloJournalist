@@ -37,6 +37,7 @@ gem 'active_model_serializers', '~> 0.10.3'
 gem 'omniauth', '~> 1.3', '>= 1.3.1'
 gem 'carrierwave', '~> 0.11.2'
 gem 'mini_magick', '~> 4.6'
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 
 
 group :development, :test do
