@@ -4,7 +4,6 @@
 
 const webpack = require('webpack');
 const path = require('path');
-var Auth = require('j-toker');
 
 const devBuild = process.env.NODE_ENV !== 'production';
 const nodeEnv = devBuild ? 'development' : 'production';
@@ -35,6 +34,8 @@ const config = {
         NODE_ENV: JSON.stringify(nodeEnv),
       },
     }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
   ],
   module: {
     loaders: [
