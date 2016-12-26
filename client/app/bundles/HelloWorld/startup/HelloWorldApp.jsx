@@ -27,9 +27,9 @@ export default (props, _railsContext) => {
 	return (
 	  <Provider store={store}>
 	  	<Router history={history}>
-	  		<Route path="/" component={HelloWorldContainer}>
-	  			<IndexRoute component={HelloWorld}></IndexRoute>
-	  			<Route path="/react-router" component={Welcome}></Route>
+	  		<Route path="/" component={HelloWorld}></Route>
+	  		<Route path="/react-router" component={HelloWorldContainer}>
+	  			<IndexRoute component={Welcome}></IndexRoute>
 	  		</Route>
 	  	</Router>
 	  </Provider>
