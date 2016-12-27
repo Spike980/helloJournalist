@@ -30,7 +30,6 @@ export default class HelloWorld extends React.Component {
   };
 
   navigation_style() {
-      $(document).ready(function(){       
          var scroll_start = 0;
          var startchange = $('#about');
          var offset = startchange.offset();
@@ -44,18 +43,16 @@ export default class HelloWorld extends React.Component {
                 $('#mainNav').css('background-color', 'transparent');
              }
          });
-          }
-      });
-
+        }
   }
 
   componentDidMount() {
-    // var store = ReactOnRails.getStore("helloReduxStore");    
+    var store = ReactOnRails.getStore("helloReduxStore");    
     this.navigation_style();
-    let router = this.context.router
-      setTimeout(function() {
-        // router.push('react-router');
-      }, 5000);
+  }
+
+  componentWillUnmount() {
+    $(document).off('scroll'); 
   }
 
   updateName = (name) => {
