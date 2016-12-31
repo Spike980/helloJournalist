@@ -1,5 +1,5 @@
 class ArticleSerializer < ActiveModel::Serializer
-  attributes :id, :post, :likes
+  attributes :id, :heading, :post, :likes
 
   belongs_to :user
   belongs_to :category

@@ -2,11 +2,13 @@ class Article < ApplicationRecord
   belongs_to :user
   belongs_to :category
   belongs_to :city
+  before_save :capitalize_words  
   mount_uploader :image, ArticleImageUploader
 
   default_scope -> { order(created_at: :desc) }
 
   validates :post, presence: true
+  validates :heading, presence: true
   validates :likes, numericality: {only_integer: true}
   validate :image_size
 
@@ -26,6 +28,12 @@ class Article < ApplicationRecord
   end
 
   private
+
+    def capitalize_words
+      heading_array = self.heading.split(" ").map{|text| text.capitalize}
+      self.heading = heading_array.join(" ")
+    end
+
   	def image_size
   		if image.size > 3.megabytes
   			errors.add(:image, "should be less than 3MB")

@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { Auth } from '../startup/HelloWorldApp';
 import { Link } from 'react-router';
+import {browserHistory} from 'react-router';
 
 const divStyle = {
 	height: '100%'
 };
 
-const Main = React.createClass({
+export default class HelloWorld extends React.Component {
+
+  constructor(props, _railsContext) {
+    super(props);
+
+    // How to set initial state in ES6 class syntax
+    // https://facebook.github.io/react/docs/reusable-components.html#es6-classes
+  }
+
+
+	logout(event) {
+		event.preventDefault();
+
+		Auth.signOut().then(function() {
+			browserHistory.push('/');
+		});
+	}	
+
 	render() {
 		return (
 			<div style={divStyle}>
@@ -24,10 +43,7 @@ const Main = React.createClass({
 			            <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			                <ul className="nav navbar-nav navbar-right">
 			                    <li>
-			                        <a href="#" data-toggle="modal" data-target="#login">Login</a>
-			                    </li>
-			                    <li>
-			                        <a href="/register">Signup</a>
+			                        <a href="#" onClick={this.logout.bind(this)}>Logout</a>
 			                    </li>
 			                </ul>
 			            </div>
@@ -54,6 +70,4 @@ const Main = React.createClass({
 			</div>
 		)
 	}
-});
-
-export default Main;
+}

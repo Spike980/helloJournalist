@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216095703) do
+ActiveRecord::Schema.define(version: 20161231074717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20161216095703) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.string   "image"
+    t.string   "heading"
     t.index ["category_id"], name: "index_articles_on_category_id", using: :btree
     t.index ["city_id", "category_id", "created_at"], name: "index_articles_on_city_id_and_category_id_and_created_at", using: :btree
     t.index ["city_id"], name: "index_articles_on_city_id", using: :btree

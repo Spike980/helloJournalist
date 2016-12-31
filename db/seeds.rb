@@ -38,7 +38,7 @@ end
 user_id = rand(1..User.count-1)
 category_id = rand(1..Category.count-1)
 city_id = rand(1..City.count-1)
-Article.create!(post: "Whatever", likes: 44, user_id: user_id, category_id: category_id, city_id: city_id)
+Article.create!(heading: "Whatever Post", post: "Whatever post is this. just post it!", likes: 44, user_id: user_id, category_id: category_id, city_id: city_id)
 
 50.times do |n|
 	user_id = rand(1..User.count-1)
@@ -46,5 +46,6 @@ Article.create!(post: "Whatever", likes: 44, user_id: user_id, category_id: cate
 	city_id = rand(1..City.count-1)
 
 	sentence = Faker::Lorem.sentence
-	Article.create!(post: sentence, likes: rand(100), user_id: user_id, category_id: category_id, city_id: city_id)
+	heading = Faker::Lorem.words(3).join(" ")
+	Article.create!(heading: heading, post: sentence, likes: rand(100), user_id: user_id, category_id: category_id, city_id: city_id)
 end
