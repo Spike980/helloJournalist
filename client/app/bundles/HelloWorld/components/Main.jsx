@@ -18,7 +18,7 @@ const Main = React.createClass({
 			                    <span className="icon-bar"></span>
 			                    <span className="icon-bar"></span>
 			                </button>
-			                <a className="navbar-brand page-scroll" href="#page-top">hc</a>
+			                <a className="navbar-brand page-scroll" id="page_navbar_brand" href="#page-top">hc</a>
 			            </div>
 
 			            <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -33,7 +33,23 @@ const Main = React.createClass({
 			            </div>
 			        </div>
 			    </nav>
+				<nav className="navbar navbar-default" id="secondary-nav" role="navigation">
 
+						<div className="collapse navbar-collapse navbar-ex1-collapse">
+							<ul className="nav navbar-nav ">
+								<li><a href="#"><i className="fa fa-flag" aria-hidden="true"></i> National</a></li>
+								<li><a href="#"><i className="fa fa-plane" aria-hidden="true"></i> International</a></li>
+								<li><a href="#"><i className="fa fa-inr" aria-hidden="true"></i> Business</a></li>
+								<li><a href="#"><i className="fa fa-futbol-o" aria-hidden="true"></i> Sports</a></li>
+								<li><a href="#"><i className="fa fa-home" aria-hidden="true"></i> Local</a></li>
+								<li><a href="#"><i className="fa fa-film" aria-hidden="true"></i> Entertainment</a></li>
+								<li><a href="#"><i className="fa fa-random" aria-hidden="true"></i> Misc</a></li>
+								<li><a href="#"><i className="fa fa-line-chart" aria-hidden="true"></i> Trending</a></li>
+								<li><a href="#"><i className="fa fa-user-circle-o" aria-hidden="true"></i> Personalized</a></li>
+								<li><a href="#"><i className="fa fa-users" aria-hidden="true"></i> Followed Authors</a></li>
+							</ul>
+						</div>					
+				</nav>
 				{React.cloneElement(this.props.children, this.props)}
 			</div>
 		)

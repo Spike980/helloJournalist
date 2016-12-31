@@ -1,14 +1,13 @@
 class AppController < ApplicationController
   def index
-    @hello_world_props = { name: "Stranger" }
+    @hello_world_props = { name: "Stranger", posts: []}
     redux_store("helloReduxStore", props: {name: "world"})
-    print("index")
     render layout: 'index'
   end
 
   def welcome
+    @app_store_state_props = {  }
     redux_store("helloReduxStore", props: {name: "world"})
-    print("welcome")
     render layout: 'application'
   end
 

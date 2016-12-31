@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { HELLO_WORLD_NAME_UPDATE } from '../constants/helloWorldConstants';
+import { HELLO_WORLD_NAME_UPDATE, WELCOME_REQUEST_ARTICLES, WELCOME_RECEIVE_ARTICLES } from '../constants/helloWorldConstants';
 import { routerReducer } from 'react-router-redux';
 
 const name = (state = '', action) => {
@@ -11,7 +11,17 @@ const name = (state = '', action) => {
   }
 };
 
-const helloWorldReducer = combineReducers({ name,
+const posts = (state='', action) => {
+  switch (action.type) {
+    case WELCOME_RECEIVE_ARTICLES:
+    	return action.result;
+    default:
+  		return state;
+	}
+
+};
+
+const helloWorldReducer = combineReducers({ name, posts,
 		routing: routerReducer });
 
 export default helloWorldReducer;

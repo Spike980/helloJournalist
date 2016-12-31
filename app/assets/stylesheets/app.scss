@@ -37,10 +37,117 @@ $primary-color: #1BBC9B;
 
 }
 
-body {
-    font-family: 'Lato';
+body p {
+    font-size: 14px;
 }
 
 .fa-btn {
     margin-right: 6px;
 }
+
+#other-than-navbar {
+	padding-top: 50px;
+}
+
+
+#post-box {
+			height: 19em;
+		}
+		#myModal {
+			margin-top: 3em;
+		}
+		.posts-info {
+			width: 80%;
+			clear: none;
+		}
+		.right-menu {
+			float: right;
+		}
+
+		h3.media-heading {
+			font-family: 'Roboto', sans-serif;
+			color: #e03d7e;
+			color: rgba(212, 88, 47, 0.84);
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			font-family: 'Open Sans', sans-serif;
+		}
+
+		#page_navbar_brand {
+			font-family: 'Great Vibes', cursive;
+			font-size: 3.5em;
+			font-weight: 700;
+			word-spacing: 0.7em;
+		}
+
+		small {
+			color: #999;
+		}
+
+		.media-object {
+			height: 50px;
+			width: 50px;
+		}
+
+		.panel-footer > .row > span > a {
+			color: #1BBC9B;
+		}
+
+		.options { 
+			border-right: 1px solid #ccc;
+		 }
+
+		.panel-footer > .row {
+			width: 100%;
+		}
+
+		.content {
+			max-height: 450px;
+		}
+
+		@media (min-width: 767px) {
+			#fixed {
+				position: fixed;
+				width: 30%;
+			}
+		}
+
+		body {
+			background: #eee;
+		}
+
+		#primary-nav .navbar-fixed-top {
+		    min-height: 70px;
+		}
+
+		#primary-nav .navbar-nav > li > a, #primary-nav .navbar-brand {
+		    padding-top: 0px;
+		    padding-bottom: 0px;
+		    line-height: 70px;
+		    color: white;
+		}
+
+		#primary-nav .navbar-nav > li > a {
+		    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif
+		}
+
+		#primary-nav {
+			margin-bottom: 0;
+			background: #1BBC9B;
+			.navbar-nav > li > a {
+				color:white;
+			}
+		}
+		
+		#secondary-nav {
+			margin-top: 50px;
+		}
+
+		@media (max-width: 767px) {
+		    #primary-nav .navbar-nav > li > a {
+		    line-height: 20px;
+		    padding-top: 10px;
+		    padding-bottom: 10px;}
+		    margin-bottom: 0;
+		}
