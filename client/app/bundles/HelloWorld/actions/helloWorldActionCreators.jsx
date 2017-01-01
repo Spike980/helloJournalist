@@ -23,6 +23,40 @@ export const postedArticle = (result) => ({
 });
 
 
+export const likedArticle = (result) => ({
+	type: nameConstants.POST_LIKE_ARTICLE,
+	result
+});
+
+export function likeArticle(id) {
+	return function(dispatch) {
+	  	$.ajaxSetup({
+		  beforeSend: function(xhr, settings) {
+		    // append outbound auth headers
+		    Auth.appendAuthHeaders(xhr, settings);
+		  }
+		});
+
+		$.ajax({
+ 
+		    // The URL for the request
+		    url: `http://localhost:3000/articles/${id}/like`,
+		 
+		    // Whether this is a POST or GET request
+		    type: "GET",
+
+		 
+		    // The type of data we expect back
+		    dataType : "json",
+		 
+		}).done(function(result) {
+			dispatch(likedArticle(result));
+		});
+	}
+
+}
+
+
 export function postArticle(data) {
 	return function(dispatch) {
 	  	$.ajaxSetup({
@@ -31,7 +65,7 @@ export function postArticle(data) {
 		    Auth.appendAuthHeaders(xhr, settings);
 		  }
 		});
-		
+
 		$.ajax({
  
 		    // The URL for the request

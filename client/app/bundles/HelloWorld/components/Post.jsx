@@ -2,7 +2,35 @@ import React, { PropTypes } from 'react';
 import ReactOnRails from 'react-on-rails';
 import { Router } from 'react-router';
 
+
+const appreciateButtonDisabled = {
+   pointerEvents: 'none',
+   cursor: 'default',
+   color: "#333",
+};
+
+const appreciateButtonEnabled = {
+};
+
 export default class Post  extends React.Component {
+  static propTypes = {
+    post: PropTypes.object.isRequired, 
+    index: PropTypes.number.isRequired,
+    likeArticle: PropTypes.func.isRequired,
+  };
+	constructor(props) {
+		super(props);
+
+		this.state = { like: appreciateButtonEnabled }
+	}
+
+	addLikes(event) {
+		event.preventDefault();
+		this.props.likeArticle(this.props.post.id);
+		this.setState({
+			like: appreciateButtonDisabled
+		});
+	}
 
 	render() {
 		return (
@@ -42,8 +70,8 @@ export default class Post  extends React.Component {
 				<div className="panel-footer">
 					<div className="row">
 						<span className="col-md-4 text-center options">
-							<a href="#">
-								<i className="fa fa-thumbs-up" aria-hidden="true"></i> Appreciate
+							<a href="#" onClick={this.addLikes.bind(this)} id={this.props.index} style={this.state.like}>
+								<i className="fa fa-thumbs-up" aria-hidden="true"></i> Appreciate <strong>({this.props.post.likes})</strong>
 							</a>
 						</span>
 						<span className="col-md-4 text-center options">

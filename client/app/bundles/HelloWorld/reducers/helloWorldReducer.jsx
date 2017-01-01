@@ -18,6 +18,16 @@ const posts = (state='', action) => {
     case nameConstants.WELCOME_POST_ARTICLES:
       console.log([action.result].concat(state));
       return [action.result].concat(state);
+    case nameConstants.POST_LIKE_ARTICLE:
+      return state.map((post) => { 
+          if (post.id == action.result.id) 
+          {
+             post.likes+=1;
+             return post;
+           }
+          else 
+            return post
+          });
     default:
   		return state;
 	}

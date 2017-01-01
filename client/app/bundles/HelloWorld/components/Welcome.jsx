@@ -6,6 +6,11 @@ import Post from './Post';
 
 export default class Welcome extends React.Component {
 
+  static propTypes = {
+    posts: PropTypes.array, 
+    fetchArticles: PropTypes.func,
+    postArticle: PropTypes.func,
+  };
   /**
    * @param props - Comes from your rails view.
    * @param _railsContext - Comes from React on Rails
