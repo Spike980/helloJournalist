@@ -180,7 +180,7 @@ header {
     min-height: auto;
     text-align: center;
     color: #fff;
-    background-image:  url(<%= asset_path("images/city.jpg") %>);
+    background-image:  url(<%= asset_path("images/newspaper.jpg") %>);
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -193,6 +193,7 @@ header .header-content {
     width: 100%;
     padding: 100px 15px;
     text-align: center;
+    margin-top: -1.5em;
 }
 
 header .header-content .header-content-inner h1 {
@@ -209,7 +210,8 @@ header .header-content .header-content-inner p {
     margin-bottom: 50px;
     font-size: 16px;
     font-weight: 300;
-    color: rgba(255,255,255,.7);
+    color: lighten(#286090, 10%);
+    background: white;
 }
 
 @media(min-width:768px) {
@@ -490,4 +492,8 @@ body {
 }
 #mainNav {
     background-color: transparent;
+}
+
+#mainNav .navbar-nav > li > a {
+    color: #ddd;
 }

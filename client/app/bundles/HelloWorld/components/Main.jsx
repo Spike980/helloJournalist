@@ -16,12 +16,19 @@ export default class HelloWorld extends React.Component {
     // https://facebook.github.io/react/docs/reusable-components.html#es6-classes
   }
 
+  componentWillMount() {
+  	console.log("Main component");
+  }
+
 
 	logout(event) {
 		event.preventDefault();
 
-		Auth.signOut().then(function() {
-			browserHistory.push('/');
+		Auth.signOut().then(function(data) {
+			console.log(data);
+			console.log("logout");
+			location.reload('/')
+			// browserHistory.push('/');
 		});
 	}	
 
@@ -37,7 +44,7 @@ export default class HelloWorld extends React.Component {
 			                    <span className="icon-bar"></span>
 			                    <span className="icon-bar"></span>
 			                </button>
-			                <a className="navbar-brand page-scroll" id="page_navbar_brand" href="#page-top">hc</a>
+			                <a className="navbar-brand page-scroll" id="page_navbar_brand" href="#page-top">hj</a>
 			            </div>
 
 			            <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

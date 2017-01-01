@@ -25,25 +25,24 @@ export default class HelloWorld extends React.Component {
     this.state = { name: this.props.name };
   }
 
-  static contextTypes = {
-    router: PropTypes.object,
-  };
+  componentWillMount() {
+    console.log("HelloWorld component");
+  }
 
   navigation_style() {
          var scroll_start = 0;
          var startchange = $('#about');
          var offset = startchange.offset();
-          if (startchange.length){
-         $(document).scroll(function() { 
-          console.log("scrollin");
-            scroll_start = $(this).scrollTop();
-            if(scroll_start > offset.top) {
-                $("#mainNav").css('background-color', '#1BBC9B');
-             } else {
-                $('#mainNav').css('background-color', 'transparent');
-             }
-         });
-        }
+         if (startchange.length){
+             $(document).scroll(function() { 
+                scroll_start = $(this).scrollTop();
+                if(scroll_start > offset.top) {
+                    $("#mainNav").css('background-color', '#1BBC9B');
+                 } else {
+                    $('#mainNav').css('background-color', 'transparent');
+                 }
+             });
+         }
   }
 
   componentDidMount() {
@@ -61,7 +60,6 @@ export default class HelloWorld extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let router = this.context.router
 
     Auth.emailSignIn({
       email: this.email.value,
@@ -71,8 +69,9 @@ export default class HelloWorld extends React.Component {
       console.log(resp.data.name);
       console.log(Auth.user.name);
       console.log(Auth.user.email);
-      router.push('react-router');
-    });
+      location.reload();
+      // browserHistory.push('/react-router');
+    }.bind(this));
 
   }
 
@@ -142,7 +141,7 @@ export default class HelloWorld extends React.Component {
                     <span className="icon-bar"></span>
                     <span className="icon-bar"></span>
                 </button>
-                <a className="navbar-brand page-scroll" href="#page-top">hc</a>
+                <a className="navbar-brand page-scroll" href="#page-top">hj</a>
             </div>
 
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -160,9 +159,9 @@ export default class HelloWorld extends React.Component {
     <header>
         <div className="header-content">
             <div className="header-content-inner">
-                <h1>hiiCiti</h1>
+                <h1>hello<span style={{ color: 'yellow' }}>-</span>Journalist</h1>
                 <hr/>
-                <p>We are helping to bring your city closer to you. Join Us and connect with you city!</p>
+                <p><em>We are helping to bring your city closer to you. Join Us and connect with you city!</em></p>
                 <a href="#about" className="btn btn-primary btn-xl page-scroll">Find Out More</a>
             </div>
         </div>

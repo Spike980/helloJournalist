@@ -8,11 +8,27 @@ import configureStore from '../store/helloWorldStore';
 // import helloReduxStore from '../stores/helloReduxStore';
 import HelloWorldContainer from '../containers/HelloWorldContainer';
 import HelloWorld from '../components/HelloWorld';
+import Register from '../components/Register';
 import Welcome from '../components/Welcome';
 
 export const Auth = require('j-toker');
 
 Auth.configure({apiUrl: 'http://localhost:3000/'});
+
+
+function authenticateUser(nextState, replace) {
+	Auth.validateToken()
+      .done(function(user) {
+      	console.log(user);
+      	console.log("already signin");
+        browserHistory.push('/react-router');
+      }.bind(this))
+      .fail(function(data) {
+      	console.log(data);
+      	console.log("need to signin")
+        browserHistory.push('/');
+      });
+}
 
 // See documentation for https://github.com/reactjs/react-redux.
 // This is how you get props from the Rails view into the redux store.
@@ -27,8 +43,9 @@ export default (props, _railsContext) => {
 	return (
 	  <Provider store={store}>
 	  	<Router history={history}>
-	  		<Route path="/" component={HelloWorld}></Route>
-	  		<Route path="/react-router" component={HelloWorldContainer}>
+	  		<Route path="/" component={HelloWorld} onEnter={authenticateUser}></Route>
+	  		<Route path="/register" component={Register}></Route>
+	  		<Route path="/react-router" component={HelloWorldContainer} onEnter={authenticateUser}>
 	  			<IndexRoute component={Welcome}></IndexRoute>
 	  		</Route>
 	  	</Router>

@@ -16,6 +16,9 @@ export default class Welcome extends React.Component {
     // https://facebook.github.io/react/docs/reusable-components.html#es6-classes
     this.state = {  };
   }
+	componentWillMount() {
+		console.log("Welcome component");
+	}
 
   componentDidMount() {
   	this.props.fetchArticles();	
