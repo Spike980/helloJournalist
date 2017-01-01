@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import ReactOnRails from 'react-on-rails';
 import { Router } from 'react-router';
+import { Auth } from '../startup/HelloWorldApp';
 import Post from './Post';
 
 export default class Welcome extends React.Component {
@@ -18,10 +19,23 @@ export default class Welcome extends React.Component {
   }
 	componentWillMount() {
 		console.log("Welcome component");
+	  	console.log(Auth.user);
 	}
 
   componentDidMount() {
-  	this.props.fetchArticles();	
+  		this.props.fetchArticles();
+  }
+
+  postArticle(event) {
+  	event.preventDefault();
+  	let articles = { article: {
+	  		heading: this.heading.value,
+	  		post: this.post.value
+		}
+  	};
+  	this.props.postArticle(articles);
+  	this.heading.value = "";
+  	this.post.value = "";
   }
 
 	render() {
@@ -73,21 +87,23 @@ export default class Welcome extends React.Component {
 		        <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		        <h4 className="modal-title" id="myModalLabel">Add Article</h4>
 		      </div>
+	      	  <form className="form" onSubmit={this.postArticle.bind(this)}>
 		      <div className="modal-body">
-		      	  <form className="form">
-			      	  <input type="text" className="form-control" placeholder="Heading" />
-			      	  <hr/>
-				      <textarea className="form-control" name="post" id="post-box" placeholder="Your content..."></textarea>
-				      <br/>
-				      <label className="btn btn-default btn-file">
-					      Upload Image<input type="file" className="form-control" style={{display:"none"}} placeholder="Upload image" multiple="" />
-					  </label>
-				  </form>
+		      	  <input type="text" name="article[heading]" className="form-control" placeholder="Heading" ref={(input) => 
+		      	  						{ this.heading = input }} />
+		      	  <hr/>
+			      <textarea className="form-control" name="article[post]" id="post-box" placeholder="Your content..." ref={(input) =>
+			      						{ this.post = input }}></textarea>
+			      <br/>
+			      <label className="btn btn-default btn-file">
+				      Upload Image<input type="file" className="form-control" style={{display:"none"}} placeholder="Upload image" multiple="" />
+				  </label>
 		      </div>
 		      <div className="modal-footer">
 		        <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-		        <button type="button" className="btn btn-primary">Save changes</button>
+		        <button type="submit" className="btn btn-primary">Save changes</button>
 		      </div>
+			  </form>
 		    </div>
 		  </div>
 		</div>

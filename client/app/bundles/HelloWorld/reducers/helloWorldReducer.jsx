@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { HELLO_WORLD_NAME_UPDATE, WELCOME_REQUEST_ARTICLES, WELCOME_RECEIVE_ARTICLES } from '../constants/helloWorldConstants';
+import * as nameConstants from '../constants/helloWorldConstants';
 import { routerReducer } from 'react-router-redux';
 
 const name = (state = '', action) => {
   switch (action.type) {
-    case HELLO_WORLD_NAME_UPDATE:
+    case nameConstants.HELLO_WORLD_NAME_UPDATE:
       return action.text;
     default:
       return state;
@@ -13,8 +13,11 @@ const name = (state = '', action) => {
 
 const posts = (state='', action) => {
   switch (action.type) {
-    case WELCOME_RECEIVE_ARTICLES:
+    case nameConstants.WELCOME_RECEIVE_ARTICLES:
     	return action.result;
+    case nameConstants.WELCOME_POST_ARTICLES:
+      console.log([action.result].concat(state));
+      return [action.result].concat(state);
     default:
   		return state;
 	}

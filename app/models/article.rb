@@ -1,7 +1,7 @@
 class Article < ApplicationRecord
   belongs_to :user
-  belongs_to :category
-  belongs_to :city
+  belongs_to :category, optional: true
+  belongs_to :city, optional: true
   before_save :capitalize_words  
   mount_uploader :image, ArticleImageUploader
 

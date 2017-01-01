@@ -161,7 +161,7 @@ export default class HelloWorld extends React.Component {
             <div className="header-content-inner">
                 <h1>hello<span style={{ color: 'yellow' }}>-</span>Journalist</h1>
                 <hr/>
-                <p><em>We are helping to bring your city closer to you. Join Us and connect with you city!</em></p>
+                <p><em>A platform to voice your opinion!</em></p>
                 <a href="#about" className="btn btn-primary btn-xl page-scroll">Find Out More</a>
             </div>
         </div>

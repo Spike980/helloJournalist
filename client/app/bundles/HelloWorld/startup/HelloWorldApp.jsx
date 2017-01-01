@@ -13,6 +13,7 @@ import Welcome from '../components/Welcome';
 
 export const Auth = require('j-toker');
 
+console.log("configure");
 Auth.configure({apiUrl: 'http://localhost:3000/'});
 
 

@@ -1,30 +1,71 @@
 /* eslint-disable import/prefer-default-export */
 
-import { HELLO_WORLD_NAME_UPDATE, WELCOME_REQUEST_ARTICLES, WELCOME_RECEIVE_ARTICLES } from '../constants/helloWorldConstants';
+import * as nameConstants from '../constants/helloWorldConstants';
+import { Auth } from '../startup/HelloWorldApp';
 
 export const updateName = (text) => ({
-  type: HELLO_WORLD_NAME_UPDATE,
+  type: nameConstants.HELLO_WORLD_NAME_UPDATE,
   text,
 });
 
 export const requestArticles = () => ({
-	type: WELCOME_REQUEST_ARTICLES
+	type: nameConstants.WELCOME_REQUEST_ARTICLES
 });
 
 export const receiveArticles = (result) => ({
-	type: WELCOME_RECEIVE_ARTICLES,
+	type: nameConstants.WELCOME_RECEIVE_ARTICLES,
 	result
 });
+
+export const postedArticle = (result) => ({
+	type: nameConstants.WELCOME_POST_ARTICLES,
+	result
+});
+
+
+export function postArticle(data) {
+	return function(dispatch) {
+	  	$.ajaxSetup({
+		  beforeSend: function(xhr, settings) {
+		    // append outbound auth headers
+		    Auth.appendAuthHeaders(xhr, settings);
+		  }
+		});
+		
+		$.ajax({
+ 
+		    // The URL for the request
+		    url: "http://localhost:3000/articles",
+		 
+		    // Whether this is a POST or GET request
+		    type: "POST",
+
+		    data: data,
+		 
+		    // The type of data we expect back
+		    dataType : "json",
+		 
+		}).done(function(result) {
+			dispatch(postedArticle(result));
+		});
+	}
+}
 
 
 export function fetchArticles() {
 	return function (dispatch) {
 		dispatch(requestArticles)
 
+	  	$.ajaxSetup({
+		  beforeSend: function(xhr, settings) {
+		    // append outbound auth headers
+		    Auth.appendAuthHeaders(xhr, settings);
+		  }
+		});
 		$.ajax({
  
 		    // The URL for the request
-		    url: "/articles",
+		    url: "http://localhost:3000/articles",
 		 
 		    // Whether this is a POST or GET request
 		    type: "GET",
