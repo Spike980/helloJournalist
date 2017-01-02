@@ -2,14 +2,9 @@
 
 This is hobby application where users can post "News Articles" online and everyone can read them. There are many more functionalities that needs to be added. It uses React-On-Rails gem to integrate Rails API with React application.
 
-Things you may want to cover:
 
-Ruby "2.3.1"
-
-Rails '~> 5.0.0', '>= 5.0.0.1'
-
-* System dependencies
 Uses:
+* Ruby "2.3.1"
 * Rails 5
 * PostgreSQL
 * React 
