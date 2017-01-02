@@ -1,24 +1,35 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is hobby application where users can post "News Articles" online and everyone can read them. There are many more functionalities that needs to be added. It uses React-On-Rails gem to integrate Rails API with React application.
 
 Things you may want to cover:
 
-* Ruby version
+Ruby "2.3.1"
+
+Rails '~> 5.0.0', '>= 5.0.0.1'
 
 * System dependencies
+Uses:
+* Rails 5
+* PostgreSQL
+* React 
+* Redux
+* React_on_Rails
+* devise_token_auth and j-toker for authentication
+* Minitest and Jest for testing
+* Active Model Serializers
 
-* Configuration
+Todo: 
+* Add pagination 
+* Frontend testing with Jest
+* Implement comments
+* Improve like feature
+* Work on Category and City features
+* Add Author Follow 
+* Fix Server rendering cause by $.extend method in J-Toker
 
-* Database creation
 
-* Database initialization
+Run the application:
+* foreman start -f Procfile.dev
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
