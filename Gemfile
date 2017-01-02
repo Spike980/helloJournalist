@@ -38,6 +38,7 @@ gem 'omniauth', '~> 1.3', '>= 1.3.1'
 gem 'carrierwave', '~> 0.11.2'
 gem 'mini_magick', '~> 4.6'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'faker', '~> 1.6', '>= 1.6.6'
 
 
 group :development, :test do
@@ -59,7 +60,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'foreman', '~> 0.82.0'
-  gem 'faker', '~> 1.6', '>= 1.6.6'
   gem 'guard' # NOTE: this is necessary in newer versions
   gem 'guard-minitest'
 end
