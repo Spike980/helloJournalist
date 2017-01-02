@@ -21,14 +21,14 @@ export default class Post  extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { like: appreciateButtonEnabled }
+		this.state = { likeButton: appreciateButtonEnabled }
 	}
 
 	addLikes(event) {
 		event.preventDefault();
 		this.props.likeArticle(this.props.post.id);
 		this.setState({
-			like: appreciateButtonDisabled
+			likeButton: appreciateButtonDisabled
 		});
 	}
 
@@ -70,7 +70,7 @@ export default class Post  extends React.Component {
 				<div className="panel-footer">
 					<div className="row">
 						<span className="col-md-4 text-center options">
-							<a href="#" onClick={this.addLikes.bind(this)} id={this.props.index} style={this.state.like}>
+							<a href="#" onClick={this.addLikes.bind(this)} id={this.props.index} style={this.state.likeButton}>
 								<i className="fa fa-thumbs-up" aria-hidden="true"></i> Appreciate <strong>({this.props.post.likes})</strong>
 							</a>
 						</span>

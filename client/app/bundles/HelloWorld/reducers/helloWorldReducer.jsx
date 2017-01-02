@@ -16,7 +16,6 @@ const posts = (state='', action) => {
     case nameConstants.WELCOME_RECEIVE_ARTICLES:
     	return action.result;
     case nameConstants.WELCOME_POST_ARTICLES:
-      console.log([action.result].concat(state));
       return [action.result].concat(state);
     case nameConstants.POST_LIKE_ARTICLE:
       return state.map((post) => { 
