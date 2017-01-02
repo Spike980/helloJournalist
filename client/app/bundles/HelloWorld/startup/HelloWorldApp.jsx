@@ -14,8 +14,9 @@ import Welcome from '../components/Welcome';
 export const Auth = require('j-toker');
 
 
+var url = window.location.hostname;
 // configure J-Toker plugin
-Auth.configure({apiUrl: 'http://localhost:3000/'});
+Auth.configure({apiUrl: `${url}`});
 
 // React router client side routing authorization function
 function authenticateUser(nextState, replace) {

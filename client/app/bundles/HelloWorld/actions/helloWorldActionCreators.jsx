@@ -3,6 +3,8 @@
 import * as nameConstants from '../constants/helloWorldConstants';
 import { Auth } from '../startup/HelloWorldApp';
 
+var url = window.location.hostname;
+
 // a fix to make the j-toker send authentication header with every request
 function sendAuthHeaders() {
   	$.ajaxSetup({
@@ -46,7 +48,7 @@ export function likeArticle(id) {
 		$.ajax({
  
 		    // The URL for the request
-		    url: `http://localhost:3000/articles/${id}/like`,
+		    url: `${url}/articles/${id}/like`,
 		 
 		    // Whether this is a POST or GET request
 		    type: "GET",
@@ -70,7 +72,7 @@ export function postArticle(data) {
 		$.ajax({
  
 		    // The URL for the request
-		    url: "http://localhost:3000/articles",
+		    url: `${url}/articles`,
 		 
 		    // Whether this is a POST or GET request
 		    type: "POST",
@@ -96,7 +98,7 @@ export function fetchArticles() {
 		$.ajax({
  
 		    // The URL for the request
-		    url: "http://localhost:3000/articles",
+		    url: `${url}/articles`,
 		 
 		    // Whether this is a POST or GET request
 		    type: "GET",
