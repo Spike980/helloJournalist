@@ -3,6 +3,15 @@
 import * as nameConstants from '../constants/helloWorldConstants';
 import { Auth } from '../startup/HelloWorldApp';
 
+function sendAuthHeaders() {
+  	$.ajaxSetup({
+	  beforeSend: function(xhr, settings) {
+	    // append outbound auth headers
+	    Auth.appendAuthHeaders(xhr, settings);
+	  }
+	});
+}
+
 export const updateName = (text) => ({
   type: nameConstants.HELLO_WORLD_NAME_UPDATE,
   text,
@@ -30,13 +39,7 @@ export const likedArticle = (result) => ({
 
 export function likeArticle(id) {
 	return function(dispatch) {
-	  	$.ajaxSetup({
-		  beforeSend: function(xhr, settings) {
-		    // append outbound auth headers
-		    Auth.appendAuthHeaders(xhr, settings);
-		  }
-		});
-
+		sendAuthHeaders();
 		$.ajax({
  
 		    // The URL for the request
@@ -59,13 +62,7 @@ export function likeArticle(id) {
 
 export function postArticle(data) {
 	return function(dispatch) {
-	  	$.ajaxSetup({
-		  beforeSend: function(xhr, settings) {
-		    // append outbound auth headers
-		    Auth.appendAuthHeaders(xhr, settings);
-		  }
-		});
-
+		sendAuthHeaders();
 		$.ajax({
  
 		    // The URL for the request
@@ -89,13 +86,8 @@ export function postArticle(data) {
 export function fetchArticles() {
 	return function (dispatch) {
 		dispatch(requestArticles)
+		sendAuthHeaders();
 
-	  	$.ajaxSetup({
-		  beforeSend: function(xhr, settings) {
-		    // append outbound auth headers
-		    Auth.appendAuthHeaders(xhr, settings);
-		  }
-		});
 		$.ajax({
  
 		    // The URL for the request
