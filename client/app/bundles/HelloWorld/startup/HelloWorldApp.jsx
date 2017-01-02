@@ -37,6 +37,21 @@ function authenticateUser(nextState, replace) {
       });
 }
 
+function authenticateRegisterPage(nextState, replace) {
+	// if valid token redirect to 'react-router'
+	// else load the root page '/'
+	Auth.validateToken()
+      .done(function(user) {
+      	console.log(user);
+      	console.log("already signin");
+        browserHistory.push('/react-router');
+      }.bind(this))
+      .fail(function(data) {
+      	console.log(data);
+      	console.log("need to signin")
+        browserHistory.push('/register');
+      });
+}
 // See documentation for https://github.com/reactjs/react-redux.
 // This is how you get props from the Rails view into the redux store.
 // This code here binds your smart component to the redux store.
@@ -52,7 +67,7 @@ export default (props, _railsContext) => {
 	  <Provider store={store}>
 	  	<Router history={history}>
 	  		<Route path="/" component={HelloWorld} onEnter={authenticateUser}></Route>
-	  		<Route path="/register" component={Register}></Route>
+	  		<Route path="/register" component={Register} onEnter={authenticateRegisterPage}></Route>
 	  		<Route path="/react-router" component={HelloWorldContainer} onEnter={authenticateUser}>
 	  			<IndexRoute component={Welcome}></IndexRoute>
 	  		</Route>

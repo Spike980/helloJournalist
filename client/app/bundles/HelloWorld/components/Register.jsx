@@ -36,7 +36,8 @@ export default class Register extends React.Component {
     		email: this.email.value,
     		password: this.password.value
     	});
-    	browserHistory.push('/react-router');	 // load the articles page
+    	console.log("signing in");
+    	location.replace('/react-router');
     }.bind(this));
   }
 
