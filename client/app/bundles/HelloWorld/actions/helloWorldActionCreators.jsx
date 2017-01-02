@@ -3,6 +3,7 @@
 import * as nameConstants from '../constants/helloWorldConstants';
 import { Auth } from '../startup/HelloWorldApp';
 
+// a fix to make the j-toker send authentication header with every request
 function sendAuthHeaders() {
   	$.ajaxSetup({
 	  beforeSend: function(xhr, settings) {
@@ -37,6 +38,8 @@ export const likedArticle = (result) => ({
 	result
 });
 
+// thunk action creator to send request to server to like article
+// accepts id of the post to increment likes of 
 export function likeArticle(id) {
 	return function(dispatch) {
 		sendAuthHeaders();
@@ -59,7 +62,8 @@ export function likeArticle(id) {
 
 }
 
-
+// post an article to the server
+// accepts the data(heading and post_content) to be posted
 export function postArticle(data) {
 	return function(dispatch) {
 		sendAuthHeaders();
@@ -77,14 +81,15 @@ export function postArticle(data) {
 		    dataType : "json",
 		 
 		}).done(function(result) {
-			dispatch(postedArticle(result));
+			dispatch(postedArticle(result)); // dispatch an action - articles receiver form the server alongwith results
 		});
 	}
 }
 
-
+// fetch all available articles from the server
 export function fetchArticles() {
 	return function (dispatch) {
+		// dispatch an action to signify that the articles are loading
 		dispatch(requestArticles)
 		sendAuthHeaders();
 
@@ -100,7 +105,7 @@ export function fetchArticles() {
 		    dataType : "json",
 		 
 		}).done(function(result) {
-			dispatch(receiveArticles(result));
+			dispatch(receiveArticles(result)); // dispatch an action - articles received from the server alongwith results
 		});
 
 	}

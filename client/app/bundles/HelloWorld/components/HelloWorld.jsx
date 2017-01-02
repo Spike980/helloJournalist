@@ -20,8 +20,6 @@ export default class HelloWorld extends React.Component {
   constructor(props, _railsContext) {
     super(props);
 
-    // How to set initial state in ES6 class syntax
-    // https://facebook.github.io/react/docs/reusable-components.html#es6-classes
     this.state = { name: this.props.name };
   }
 
@@ -29,6 +27,7 @@ export default class HelloWorld extends React.Component {
     console.log("HelloWorld component");
   }
 
+  // change the color of navigation bar on the end of the page
   navigation_style() {
          var scroll_start = 0;
          var startchange = $('#about');
@@ -50,6 +49,7 @@ export default class HelloWorld extends React.Component {
     this.navigation_style();
   }
 
+  // remove the onScroll event 
   componentWillUnmount() {
     $(document).off('scroll'); 
   }
@@ -58,6 +58,7 @@ export default class HelloWorld extends React.Component {
     this.setState({ name });
   };
 
+  // submit the login form to the server and then reload the page
   handleSubmit(event) {
     event.preventDefault();
 

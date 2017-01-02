@@ -23,6 +23,7 @@ export default class Register extends React.Component {
   		browserHistory.push('/react-router');
   }
 
+  // handle the submission and user registration form and dispatch an action for the same
   handleSubmit(event) {
     event.preventDefault();
 
@@ -30,12 +31,12 @@ export default class Register extends React.Component {
       email: this.email.value,
       password: this.password.value,
       password_confirmation: this.password_confirmation.value
-    }).then(function() {
+    }).then(function() {   // signIn the new user if the signUp was successful
     	Auth.emailSignIn({
     		email: this.email.value,
     		password: this.password.value
     	});
-    	browserHistory.push('/react-router');	
+    	browserHistory.push('/react-router');	 // load the articles page
     }.bind(this));
   }
 

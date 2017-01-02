@@ -21,6 +21,7 @@ export default class HelloWorld extends React.Component {
   }
 
 
+  	// handle the logout of the user session
 	logout(event) {
 		event.preventDefault();
 

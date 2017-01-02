@@ -27,10 +27,12 @@ export default class Welcome extends React.Component {
 	  	console.log(Auth.user);
 	}
 
+	// fetch articles from server onLoad
   componentDidMount() {
   		this.props.fetchArticles();
   }
 
+  // post an article to the server
   postArticle(event) {
   	event.preventDefault();
   	let articles = { article: {
@@ -39,6 +41,7 @@ export default class Welcome extends React.Component {
 		}
   	};
   	this.props.postArticle(articles);
+  	// clear the form values after submit
   	this.heading.value = "";
   	this.post.value = "";
   }

@@ -13,11 +13,14 @@ import Welcome from '../components/Welcome';
 
 export const Auth = require('j-toker');
 
-console.log("configure");
+
+// configure J-Toker plugin
 Auth.configure({apiUrl: 'http://localhost:3000/'});
 
-
+// React router client side routing authorization function
 function authenticateUser(nextState, replace) {
+	// if valid token redirect to 'react-router'
+	// else load the root page '/'
 	Auth.validateToken()
       .done(function(user) {
       	console.log(user);
@@ -39,6 +42,7 @@ function authenticateUser(nextState, replace) {
 
 export default (props, _railsContext) => {
 	const store = configureStore(props);
+	// make history object compatible with Redux store
 	const history = syncHistoryWithStore(browserHistory, store);
 
 	return (

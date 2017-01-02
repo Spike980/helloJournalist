@@ -3,12 +3,14 @@ import ReactOnRails from 'react-on-rails';
 import { Router } from 'react-router';
 
 
+// disable the Appreciate button once user has clicked
 const appreciateButtonDisabled = {
    pointerEvents: 'none',
    cursor: 'default',
    color: "#333",
 };
 
+// default state of appreciate button with no specific styling
 const appreciateButtonEnabled = {
 };
 
@@ -18,15 +20,19 @@ export default class Post  extends React.Component {
     index: PropTypes.number.isRequired,
     likeArticle: PropTypes.func.isRequired,
   };
+
 	constructor(props) {
 		super(props);
 
 		this.state = { likeButton: appreciateButtonEnabled }
 	}
 
+	// increment likes of a post and dispatch an action for the same
+	// task - "implement feature that a user can only like a post once"
 	addLikes(event) {
 		event.preventDefault();
 		this.props.likeArticle(this.props.post.id);
+		// change the state of Appreciate button when it is clicked to change the styling
 		this.setState({
 			likeButton: appreciateButtonDisabled
 		});
