@@ -17,7 +17,8 @@ export const Auth = require('j-toker');
 let url = window.location.hostname;
 let protocol = window.location.protocol;
 // configure J-Toker plugin
-Auth.configure({apiUrl: `${protocol}//${url}`});
+console.log(`${protocol}//${url}:${location.port}`);
+Auth.configure({apiUrl: `${protocol}//${url}:${location.port}`});
 
 // React router client side routing authorization function
 function authenticateUser(nextState, replace) {
