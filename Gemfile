@@ -33,6 +33,7 @@ gem 'turbolinks', '~> 5'
 # gem 'capistrano-rails', group: :development
 gem "react_on_rails", "6.1"
 gem 'devise_token_auth', '~> 0.1.39'
+gem 'versionist', '~> 1.5'
 gem 'active_model_serializers', '~> 0.10.3'
 gem 'omniauth', '~> 1.3', '>= 1.3.1'
 gem 'carrierwave', '~> 0.11.2'
